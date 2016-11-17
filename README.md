@@ -1,6 +1,8 @@
 # CS3030Homework7
 Jonathan Mirabile
+
 Jeremy Marcusen
+
 Morgan Dahl
 
 This assignment practices module importing and module testing. 

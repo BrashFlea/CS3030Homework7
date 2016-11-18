@@ -52,18 +52,23 @@ def printBarCode(zipCode):
             Prints zipCode in Barcode format
             Note: Adds | to beginning and ending as well as Check Digit
     """
-    
+    barcode = []
+    digits = [int(i) for i in str(zipCode)]
+    for d in digits:
+        barcode.append(printDigit(d))
+
+    print("".join(str(x) for x in barcode))
 
 
 
 # Main function
-def main():
+def main(zipcode):
+    printBarCode(zipcode)
     return
 
 
 if __name__ == "__main__":
     # Call Main
-    main()
-
+    main(sys.argv[1])
     exit(0)
 

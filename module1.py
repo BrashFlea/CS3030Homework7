@@ -2,9 +2,16 @@
 import sys
 from urllib.request import urlopen
 
-url="http://icarus.cs.weber.edu/~hvalle/cs3030/data/minivanTest.csv"
+#url="http://icarus.cs.weber.edu/~hvalle/cs3030/data/minivanTest.csv"
 
 def create_list(url):
+    """
+    Creates a list of values from a url
+    Args:
+        A url that contains a csv file
+    Returns:
+        The created list
+    """
     values = []
     
     with urlopen(url) as file:
@@ -37,6 +44,10 @@ def create_list(url):
 
 # Main function
 def main():
+    """
+    Tests main funtion create_list
+    """
+    
     create_list(url)
 
 if __name__ == "__main__":

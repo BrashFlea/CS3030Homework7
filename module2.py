@@ -4,6 +4,12 @@ from urllib.request import urlopen
 import module1
 
 def testModule1():
+    """
+    Imports Module1 and uses create_list function to test a url that includes data that simulates switches in a car and evaluates whether the doors should open or close
+    Args:
+        N/A 
+    """
+
     url="http://icarus.cs.weber.edu/~hvalle/cs3030/data/minivanTest.csv"
     values = module1.create_list(url)
     #def fetch_file(url):
@@ -42,6 +48,9 @@ def testModule1():
 
 # Main function
 def main():
+    """
+    Tests main function testModule1
+    """
    testModule1() 
 
 if __name__ == "__main__":

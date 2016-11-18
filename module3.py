@@ -8,7 +8,7 @@
 import sys
 
 """
-This program takes user a zip code as input and prints it in bar code form
+This program takes user a zip code as input and prints it in postal barcode form
     Args:
         Zipcode
     Returns:
@@ -28,6 +28,8 @@ def printDigit(d):
             : denotes half bars
             | denotes full bars
     """
+    #Python representation of a case statement
+    #Invalid Input at the bottom is the default statement and will trigger when passed double digits
     value = {
             1: ":::||",
             2: "::|:|",
@@ -42,23 +44,35 @@ def printDigit(d):
         }
     return value.get(d, "Invalid Input")
 
+
 def printBarCode(zipCode):
     """
-    Converts a zipcode into barcode format
+    Converts a zipcode into postal barcode format
     Splits the zipcode and loops through it using printDigit() to convert the number
         Args:
             zipCode
         Returns:
             Prints zipCode in Barcode format
-            Note: Adds | to beginning and ending as well as Check Digit
+            : denotes half bars
+            | denotes full bars
+            Note: Adds | to beginning and ending as well as check digit
     """
-    barcode = []
+    #Create a list that will represent the barcode and add the leading guard
+    barcode = ["|",]
+    #Break the zipcode apart into a list of values
     digits = [int(i) for i in str(zipCode)]
+    #Convert each digit into the barcode representation
     for d in digits:
         barcode.append(printDigit(d))
-
-    print("".join(str(x) for x in barcode))
-
+    #Handle the checkdigit and convert it as well
+    checkDigit = sum(digits) % 10
+    if checkDigit %10 != 0:
+        checkDigit = printDigit(10 - checkDigit)
+    else:
+        checkDigit = printDigit(checkDigit)
+    #Create an empty string and add all the elements from the barcode list, the check digit, and the trailing guard
+    #Note: sep = "" strips the spaces from the print statement
+    print("".join(str(x) for x in barcode),checkDigit,"|",sep="")
 
 
 # Main function

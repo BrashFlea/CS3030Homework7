@@ -8,19 +8,22 @@
 import sys
 import urllib
 import urllib.request
+from module3 import printBarCode, printDigit
 """
 
 """
 
-def fetch_url():
+def test_zipcodes():
     url = "http://icarus.cs.weber.edu/~hvalle/cs3030/data/barCodeData.txt"
     resource = urllib.request.urlopen(url)
-    content = resource.read().decode()
-    print(content)
+    content = resource.read().decode().split()
+    print("Converting Zipcodes:", content)
+    for zipcode in content:
+        printBarCode(zipcode)
 
 # Main function
 def main():
-    fetch_url()
+    test_zipcodes()
     return
 
 
